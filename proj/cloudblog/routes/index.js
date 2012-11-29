@@ -39,9 +39,26 @@ module.exports = function (app) {
             if (req.body['password-repeat'] != req.body['password']) {
              // req.end('error', 'you got an error!');
              // return res.redirect('reg');
-             console.log(req.body);
+             res.end('Congratulations!');
             }
         });
 
+    });
+
+    app.get('/runtest', function (req, res) {
+        var str = '',
+            comment = '';
+
+        var lineReader = require('line-reader');
+
+        lineReader.eachLine('./test/brix-packet.js', function(line) {
+            if (line.search(/\*/i) !== -1) {
+                comment += line;
+            } else {
+                str +=line;
+            }
+        }).then(function () {
+          res.end('<pre>'+comment+'</pre>'+'<p style="background-color: green;">'+str+'</p>');
+        });
     });
 };
