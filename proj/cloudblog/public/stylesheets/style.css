@@ -1,0 +1,33 @@
+/*body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}*/
+.header a {
+    line-height: 60px;
+    font-size: 60px;
+}
+
+.nav {
+    background-color: black;
+}
+
+.nav ul {
+    width: 100%;
+    height: 24px;
+    padding: 10px 0;
+}
+
+.nav li {
+    float: left;
+    margin-right: 10px;
+    list-style: none;
+}
+
+.nav li a {
+    display: block;
+    line-height: 24px;
+}
