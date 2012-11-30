@@ -1,6 +1,4 @@
 /**
- * drinking cloud
- * @class Brix.Gallery.Packet
- * @extends Brix.Brick
+ * sdf
  */
  drinking cloud
