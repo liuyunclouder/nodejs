@@ -31,3 +31,12 @@ a {
     display: block;
     line-height: 24px;
 }
+
+.login-panel {
+  float: right;
+  margin-top: -42px;
+}
+
+.login-panel a {
+  margin-right: 10px;
+}

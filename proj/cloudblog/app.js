@@ -7,8 +7,7 @@ var express = require('express');
 
 var app = express();
 
-var routes = require('./routes')(app)
-  , user = require('./routes/user')
+var user = require('./routes/user')
   , http = require('http')
   , path = require('path')
   , url = require('url');
@@ -25,7 +24,6 @@ app.configure(function(){
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
-  app.use(require('connect').bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({
@@ -34,9 +32,12 @@ app.configure(function(){
       db: settings.db
     })
   }));
-  app.use(app.router);
+  var routes = require('./routes')(app);
+  // app.use(app.router);
   // app.use(express.router(routes));
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use('/test', express.static(path.join(__dirname, 'test')));
+  app.use('/upload', express.static(path.join(__dirname, 'upload')));
 });
 
 app.configure('development', function(){
@@ -47,5 +48,4 @@ app.configure('development', function(){
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-
 

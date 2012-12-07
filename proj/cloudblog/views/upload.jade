@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    form(class="form-horizontal", method="post", enctype="multipart/form-data")
+     fieldset
+       legend #{title}
+       div(class="control-group")
+       div(class="controls")
+         input(type="file", class="input-xlarge", id="image", name="image")
+       div.form-action
+         button(type="submit", class="btn btn-primary") #{title}

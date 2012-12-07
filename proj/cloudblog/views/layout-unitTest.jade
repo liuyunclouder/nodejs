@@ -1,0 +1,29 @@
+doctype 5
+html
+  head
+    block head
+        title= title
+        link(rel='stylesheet', href='./stylesheets/style.css')
+        link(rel='stylesheet', href='./stylesheets/jasmine.css')
+  
+  body
+    //
+        div.header
+            a(href="./") CloudBlog
+        div.nav
+            ul
+                li
+                    a(href="./") index
+                li
+                    a(href="./reg") reg
+                li
+                    a(href="./unit_test") unit_test
+
+    block content
+
+    block foot
+        script(src='http://code.jquery.com/jquery-latest.js')
+        script(src='./javascripts/bootstrap.js')
+        script(src='./javascripts/jasmine.js')
+        script(src='./javascripts/jasmine-html.js')
+        
