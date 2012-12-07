@@ -169,7 +169,6 @@ module.exports = function (app) {
             tmp += 'it(' + '"' + v['title'] + '"' + ', ' + v['body'] + ');\r\n';
         });
         tmp += '});\r\n';
-        console.log(tmp);
         return tmp;
     }
 
