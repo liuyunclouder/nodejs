@@ -122,4 +122,8 @@ io.sockets.on('connection', function (socket) {
         socket.emit('MoreData', { 'Place' : Place, 'Percent' :  Percent});
       }
     });
+
+    socket.on('fileChosen', function (data) {
+      console.log(data.msg);
+    });
 });

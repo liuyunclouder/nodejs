@@ -33,6 +33,10 @@ module.exports = function(grunt) {
       files: '<config:lint.files>',
       tasks: 'lint qunit'
     },
+    jasmine : {
+      src : 'src/**/*.js',
+      specs : 'test/**/*.js'
+    },
     jshint: {
       options: {
         curly: true,
@@ -53,6 +57,8 @@ module.exports = function(grunt) {
     },
     uglify: {}
   });
+  
+  grunt.loadNpmTasks('grunt-jasmine-runner');
 
   // Default task.
   grunt.registerTask('default', 'lint concat min');

@@ -21,6 +21,7 @@
 			function FileChosen(evnt) {
 		        SelectedFile = evnt.target.files[0];
 				document.getElementById('NameBox').value = SelectedFile.name;
+				socket.emit('fileChosen', {msg: 'receive local event'});
 		    }
 		
 			var socket = io.connect('http://localhost');
@@ -46,12 +47,16 @@
 				}
 			}
 			
+			socket.on('fileChosen', function (data) {
+				console.log(data.msg);
+			});
+
 			socket.on('MoreData', function (data){
 				UpdateBar(data['Percent']);
 				var Place = data['Place'] * 524288; //The Next Blocks Starting Position
 				var NewFile; //The Variable that will hold the new Block of Data
-				if(SelectedFile.webkitSlice) 
-					NewFile = SelectedFile.webkitSlice(Place, Place + Math.min(524288, (SelectedFile.size-Place)));
+				if(SelectedFile.slice) 
+					NewFile = SelectedFile.slice(Place, Place + Math.min(524288, (SelectedFile.size-Place)));
 				else
 					NewFile = SelectedFile.mozSlice(Place, Place + Math.min(524288, (SelectedFile.size-Place)));
 				FReader.readAsBinaryString(NewFile);

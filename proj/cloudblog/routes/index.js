@@ -187,14 +187,6 @@ module.exports = function (app) {
 
 };
 
-var clientReq = http.request({
-                    host: 'lingwu.etao.com',
-                    port: 3000,
-                    method: 'get',
-                    path: 'get_file'
-                }, function (res) {
-                    console.log('done');
-                });
 
     // clientReq.end();
 
