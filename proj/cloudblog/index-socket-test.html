@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Video Uploader</title>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+		  var socket = io.connect('http://localhost:5566/');
+		  socket.on('connect', function () {
+		    socket.send('hi');
+
+		    socket.on('message', function (msg) {
+		      // my msg
+		    });
+		  });
+		</script>
+	</head>
+	<body> 
+		<div id="UploadBox">
+			<h2>Video Uploader</h2>
+			<span id='UploadArea'>
+				<label for="FileBox">Choose A File: </label><input type="file" id="FileBox"><br>
+				<label for="NameBox">Name: </label><input type="text" id="NameBox"><br>
+				<button	type='button' id='UploadButton' class='Button'>Upload</button>
+			</span>
+		</div>
+	</body>
+</html>
