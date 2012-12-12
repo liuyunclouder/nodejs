@@ -1,25 +1,16 @@
-
-/**
- * Module dependencies.
- */
-
-var express = require('express');
+var express = require('express'),
+    user = require('./routes/user'),
+    http = require('http'),
+    path = require('path'),
+    url = require('url'),
+    fs = require('fs'),
+    exec = require('child_process').exec,
+    util = require('util'),
+    MongoStore = require('connect-mongo')(express),
+    settings = require('./settings'),
+    Files = {};
 
 var app = express();
-
-var user = require('./routes/user')
-  , http = require('http')
-  , path = require('path')
-  , url = require('url')
-  , fs = require('fs')
-  , exec = require('child_process').exec
-  , util = require('util')
-  , Files = {};
-
-
-
-var MongoStore = require('connect-mongo')(express);
-var settings = require('./settings');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -54,8 +45,8 @@ var serverInstance = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-var io = require('socket.io').listen(serverInstance);
 
+var io = require('socket.io').listen(serverInstance);
 
 io.sockets.on('connection', function (socket) {
     socket.on('Start', function (data) { //data contains the variables that we passed through in the html file

@@ -100,24 +100,24 @@ module.exports = function (app) {
     });
 
     app.get('/get_file', checkLogin, function (req, res) {
-       var filename = __dirname + '/../upload/cloud.jpg';
-       console.log(filename);
+       var filename = __dirname + '/../cloud.jpg';
 
-       fs.readFile(filename, function(err,file){
-            if (err) {
-                console.log(err);
-            }
-           var contentType=mime.lookup(filename);
-           console.log(contentType);
-           // console.log(file);
-           res.set({
-               "Content-Type":contentType,
-               "Content-Length":file.length,
-               "Server":"NodeJs("+process.version+")"
-           });
-           res.send(file);
-           res.end();
-        });
+       // fs.readFile(filename, function(err,file){
+       //      if (err) {
+       //          console.log(err);
+       //      }
+       //     var contentType=mime.lookup(filename);
+       //     console.log(contentType);
+       //     // console.log(file);
+       //     res.set({
+       //         "Content-Type":contentType,
+       //         "Content-Length":file.length,
+       //         "Server":"NodeJs("+process.version+")"
+       //     });
+       //     res.send(file);
+       //     res.end();
+       //  });
+        res.sendfile(filename);
 
        
     });
