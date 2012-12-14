@@ -8,12 +8,16 @@
   },
   "dependencies": {
     "express": "3.0.3",
-    "connect": ">=2.7.0",
+    // "connect": ">=2.7.0",
     "jade": "*",
     "connect-mongo": ">= 0.1.7",
     "mongodb": ">=1.2.0",
     "mime": ">=1.2.7",
     "grunt-jasmine-runner": ">=0.6.0",
     "socket.io": "0.9.11"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
   }
 }
