@@ -1,1 +1,1 @@
-web: node proj/cloudblog/app.js
+web: node proj/cloudblog/app-no-socket.js
