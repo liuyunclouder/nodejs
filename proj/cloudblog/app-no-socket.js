@@ -21,7 +21,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  /*app.use(express.session({
+  /*app.use(express. session({
     secret: settings.cookieSecret,
     store: new MongoStore({
       db: settings.db
