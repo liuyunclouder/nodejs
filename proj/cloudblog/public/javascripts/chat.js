@@ -1,5 +1,7 @@
 $(function () {
-  var socket = io.connect('http://localhost');
+  var domain = getDomain();
+
+  var socket = io.connect(domain);
   $('#msg-sender').click(function (e) {
     e.preventDefault();
     var msg = $('.faux-input').val();
@@ -11,3 +13,11 @@ $(function () {
     $("#chat-msg-container").append(data);
   });
 });
+
+function getDomain () {
+  var domainName = 'http://localhost';
+  if (/herokuapp/i.test(window.location.href)) {
+      domainName = 'http://liuyunclouder.herokuapp.com';
+  }
+  return domainName;
+}
