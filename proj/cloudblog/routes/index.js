@@ -144,6 +144,12 @@ module.exports = function (app) {
         });
     });
 
+    app.get('/chat', function (req, res) {
+       res.render('chat', {
+        title: 'chat'
+       });
+    });
+
 
 
     function checkLogin (req, res, next) {

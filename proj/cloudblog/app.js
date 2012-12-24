@@ -48,6 +48,11 @@ var serverInstance = http.createServer(app).listen(app.get('port'), function(){
 
 var io = require('socket.io').listen(serverInstance);
 
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
+
 io.sockets.on('connection', function (socket) {
     socket.on('Start', function (data) { //data contains the variables that we passed through in the html file
       var Name = data['Name'];
@@ -116,5 +121,9 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('fileChosen', function (data) {
       console.log(data.msg);
+    });
+
+    socket.on('send:coords', function (data) {
+      socket.broadcast.emit('load:coords', data);
     });
 });

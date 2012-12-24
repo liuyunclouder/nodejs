@@ -6,7 +6,8 @@ var express = require('express'),
     fs = require('fs'),
     // exec = require('child_process').exec,
     util = require('util'),
-    MongoStore = require('connect-mongo')(express),
+    // MongoStore = require('connect-mongo')(express),
+    MongooseStore = require('./models/mongoose.js').init();
     settings = require('./settings'),
     Files = {};
 

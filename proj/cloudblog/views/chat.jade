@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  div(class="chat-wrap", style="width: 400px;margin: 0 auto;")
+    form(class="chat", method="post")
+      fieldset
+        legend #{title}
+        div(class="control-group")
+        div(class="controls")
+          textarea(id="chat-msg-container", class="textarea-xlarge", style="width: 400px;height: 500px;", name="chatroom") 
+        div(class="control-group")
+        div(class="controls")
+           textarea(class="faux-input", style="width: 400px;height: 50px;") 
+        div.form-action
+          button(type="submit", class="btn btn-primary", id="msg-sender") send
+
+append foot
+  script(src="/socket.io/socket.io.js")
+  script(src="/javascripts/chat.js")
+
+
+
+
+
+
+
+
+
+
+
+
+
