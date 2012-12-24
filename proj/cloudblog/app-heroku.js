@@ -22,12 +22,12 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express. session({
-    secret: settings.cookieSecret,
-    store: new MongoStore({
-      db: settings.db
-    })
-  }));
+  // app.use(express. session({
+  //   secret: settings.cookieSecret,
+  //   store: new MongoStore({
+  //     db: settings.db
+  //   })
+  // }));
   var routes = require('./routes')(app);
   // app.use(app.router);
   // app.use(express.router(routes));
@@ -48,6 +48,11 @@ var serverInstance = http.createServer(app).listen(app.get('port'), function(){
 
 
 var io = require('socket.io').listen(serverInstance);
+
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
 
 io.sockets.on('connection', function (socket) {
     socket.on('Start', function (data) { //data contains the variables that we passed through in the html file
