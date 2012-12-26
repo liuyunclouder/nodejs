@@ -169,6 +169,45 @@ module.exports = function (app) {
 
     });
 
+    app.get('/article/:id?', function (req, res) {
+      var markdown = require('markdown').markdown;
+
+      app.locals.markdown = markdown;
+
+      if (req.params.id !== undefined) {
+        fs.readFile(__dirname + '/../article/' + req.params.id + '.md', 'utf-8', function (err, data) {
+          if (err) {
+            console.log(err);
+          }
+          res.end(markdown.toHTML(data));
+        });
+      } else {
+
+        fileTasks = fs.readdirSync('article')
+        .filter(function (filename) {
+          console.log(filename);
+          return fs.statSync(__dirname + '/../article/' + filename).isFile();
+        })
+        .map(function (filename, i) {
+          return function (callback) {
+            fs.readFile(__dirname + '/../article/' + filename, 'utf-8', callback);
+          };
+        });
+        async.parallel(fileTasks, function (err, results) {
+          if (err) {
+            throw err;
+          }
+          res.render('article-list', {
+            title: 'article',
+            data: results
+          });
+        });
+      }
+       // res.render('article', {
+       //  title: 'chat'
+       // });
+    });
+
 
 
     function checkLogin (req, res, next) {

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  ul
+    - data.forEach(function(item){
+      - item = markdown.toHTML(item)
+      li !{item}
+    - })
+
+
+
+
+
+
+
+
+
+
+
+
+

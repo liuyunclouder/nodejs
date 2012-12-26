@@ -10,7 +10,8 @@
     "mime": ">=1.2.7",
     "grunt-jasmine-runner": ">=0.6.0",
     "socket.io": "0.9.11",
-    "async": ">=0.1.22"
+    "async": ">=0.1.22",
+    "markdown": ">=0.4.0"
   },
   "engines": {
     "node": "0.8.x",
