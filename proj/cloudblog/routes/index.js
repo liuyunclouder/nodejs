@@ -2,7 +2,8 @@ var qs = require('querystring'),
     fs = require('fs'),
     path=require("path"),
     mime = require('mime'),
-    http = require('http');
+    http = require('http'),
+    async = require('async');
 
 module.exports = function (app) {
     var Users = ['cloud', 'tree'];
@@ -148,6 +149,24 @@ module.exports = function (app) {
        res.render('chat', {
         title: 'chat'
        });
+    });
+
+    app.get('/test', function (req, res) {
+      var start = new Date();
+      async.parallel([
+        function (callback) {
+          setTimeout(callback, 100);
+        },
+        function (callback) {
+          setTimeout(callback, 300);
+        },
+        function (callback) {
+          setTimeout(callback, 200);
+        }
+        ], function (err, results) {
+          res.end('completed in ' + (new Date() - start) + 'ms');
+        });
+
     });
 
 
